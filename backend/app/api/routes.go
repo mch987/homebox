@@ -180,6 +180,8 @@ func (a *app) mountRoutes(r *chi.Mux, chain *errchain.ErrChain, repos *repo.AllR
 		r.Post("/entities/{id}/maintenance", chain.ToHandlerFunc(v1Ctrl.HandleMaintenanceEntryCreate(), userMW...))
 
 		r.Get("/assets/{id}", chain.ToHandlerFunc(v1Ctrl.HandleAssetGet(), userMW...))
+		r.Get("/assets/{id}/movement-history", chain.ToHandlerFunc(v1Ctrl.HandleAssetMovementHistoryGet(), userMW...))
+		r.Post("/assets/{id}/movement-history", chain.ToHandlerFunc(v1Ctrl.HandleAssetMovementHistoryCreate(), userMW...))
 
 		// Entity Templates
 		r.Get("/templates", chain.ToHandlerFunc(v1Ctrl.HandleEntityTemplatesGetAll(), userMW...))

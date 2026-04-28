@@ -45,6 +45,7 @@
   import DetailsSection from "~/components/global/DetailsSection/DetailsSection.vue";
   import ItemAttachmentsList from "~/components/Item/AttachmentsList.vue";
   import ItemViewSelectable from "~/components/Item/View/Selectable.vue";
+  import AssetMovementSidebar from "~/components/Item/AssetMovementSidebar.vue";
 
   const { t } = useI18n();
 
@@ -799,6 +800,11 @@
               </div>
             </template>
           </DetailsSection>
+        </BaseCard>
+
+        <BaseCard v-if="!hasNested && item.assetId && item.assetId !== '000-000'" collapsable>
+          <template #title> Asset Movement </template>
+          <AssetMovementSidebar :item="item" />
         </BaseCard>
 
         <!-- anything in this is not rendered if on another page -->
